@@ -23,8 +23,8 @@ public class ProjetoescolaApplication {
 	@Bean
 	public CommandLineRunner init(@Autowired CursoRepository cursoRepository, @Autowired CategoriaCursoRepository categoriaCursoRepository) {
 		return args -> {
-			categoriaCursoRepository.inserir(new CategoriaCurso(null,"Informática"));
-			categoriaCursoRepository.inserir(new CategoriaCurso(null,"Cálculo"));
+			categoriaCursoRepository.inserir(new CategoriaCurso(0,"Informática"));
+			categoriaCursoRepository.inserir(new CategoriaCurso(0,"Cálculo"));
 
 			cursoRepository.inserir(new Curso(0l,"ADS",2000));
 			cursoRepository.inserir(new Curso(0l,"Matemática",2050));
@@ -34,15 +34,25 @@ public class ProjetoescolaApplication {
 			lista.forEach(c -> {
 				System.out.println(c.getId());
 			});
-			
+
 			
 			System.out.println("Exemplo de Lista por nome");
 			List<Curso> listaPorNome = cursoRepository.obterPorNome("ADS");
 			listaPorNome.forEach(System.out::println);
-
+			
 			System.out.println("Exemplo de categorias");
 			List<CategoriaCurso> listaPorCategoria = categoriaCursoRepository.obterTodos();
+
 			listaPorCategoria.forEach(System.out::println);
+
+			Curso cAds = lista.get(0);
+			Curso cSi  = lista.get(1);
+
+			cAds.setCategoriaCurso(listaPorCategoria.get(0));
+			cSi.setCategoriaCurso(listaPorCategoria.get(1));
+
+			cursoRepository.update(cSi);
+			cursoRepository.update(cAds);
 		};
 	}
 

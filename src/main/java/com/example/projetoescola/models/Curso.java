@@ -25,6 +25,14 @@ public class Curso {
   
   private CategoriaCurso categoriaCurso;
 
+  public CategoriaCurso getCategoriaCurso() {
+    return categoriaCurso;
+  }
+
+  public void setCategoriaCurso(CategoriaCurso categoriaCurso) {
+    this.categoriaCurso = categoriaCurso;
+  }
+
   public Curso(Long id, String nome, int cargaHoraria) {
     this.id = id;
     this.nome = nome;

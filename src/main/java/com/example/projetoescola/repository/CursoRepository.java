@@ -22,6 +22,12 @@ public class CursoRepository {
     return curso;
   }
 
+  @Transactional
+  public Curso update(Curso curso) {
+    this.entityManager.merge(curso);
+    return curso;
+  }
+
   public List<Curso> obterTodos() {
     return this.entityManager.createQuery("SELECT c FROM Curso c", Curso.class).getResultList();
   }
