@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Curso {
@@ -17,6 +19,11 @@ public class Curso {
 
   @Column(nullable = false)
   private int cargaHoraria;
+
+  @ManyToOne
+  @JoinColumn(name="categoriaCurso_id")
+  
+  private CategoriaCurso categoriaCurso;
 
   public Curso(Long id, String nome, int cargaHoraria) {
     this.id = id;

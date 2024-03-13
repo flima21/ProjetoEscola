@@ -23,11 +23,11 @@ public class ProjetoescolaApplication {
 	@Bean
 	public CommandLineRunner init(@Autowired CursoRepository cursoRepository, @Autowired CategoriaCursoRepository categoriaCursoRepository) {
 		return args -> {
-			cursoRepository.inserir(new Curso(0l,"ADS",2000));
-			cursoRepository.inserir(new Curso(0l,"Matemática",2050));
-
 			categoriaCursoRepository.inserir(new CategoriaCurso(null,"Informática"));
 			categoriaCursoRepository.inserir(new CategoriaCurso(null,"Cálculo"));
+
+			cursoRepository.inserir(new Curso(0l,"ADS",2000));
+			cursoRepository.inserir(new Curso(0l,"Matemática",2050));
 
 			System.out.println("Exemplo de Lista");
 			List<Curso> lista = cursoRepository.obterTodos();

@@ -19,10 +19,6 @@ public class CursoRepository {
   @Autowired
   private EntityManager entityManager;
 
-  @ManyToOne
-  @JoinColumn(name="categoriaCurso_id")
-  private CategoriaCurso categoriaCurso;
-
   @Transactional
   public Curso inserir(Curso curso) {
     this.entityManager.merge(curso);
