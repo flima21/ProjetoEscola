@@ -2,15 +2,16 @@ package com.example.projetoescola.repository;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.projetoescola.models.Curso;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-import jakarta.transaction.Transactional;
-
+public interface CursoRepository extends JpaRepository<Curso, Long> {
+    List<Curso> findByNome(String nome);
+    List<Curso> findByNomeContaining(String nome);
+    List<Curso> findByCargaHorariaGreaterThanEqual(int cargaHoraria);
+    List<Curso> findByCargaHorariaLessThanEqual(int cargaHoraria);
+}
+/*
 @Repository
 public class CursoRepository {
   @Autowired
@@ -42,3 +43,4 @@ public class CursoRepository {
   }
 
 }
+ */

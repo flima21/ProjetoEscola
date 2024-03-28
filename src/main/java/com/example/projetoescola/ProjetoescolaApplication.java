@@ -23,36 +23,36 @@ public class ProjetoescolaApplication {
 	@Bean
 	public CommandLineRunner init(@Autowired CursoRepository cursoRepository, @Autowired CategoriaCursoRepository categoriaCursoRepository) {
 		return args -> {
-			categoriaCursoRepository.inserir(new CategoriaCurso(0,"Informática"));
-			categoriaCursoRepository.inserir(new CategoriaCurso(0,"Cálculo"));
+			categoriaCursoRepository.save(new CategoriaCurso(0,"Informática"));
+			categoriaCursoRepository.save(new CategoriaCurso(0,"Cálculo"));
 
-			cursoRepository.inserir(new Curso(0l,"ADS",2000));
-			cursoRepository.inserir(new Curso(0l,"Matemática",2050));
+			cursoRepository.save(new Curso(0l,"ADS",2000));
+			cursoRepository.save(new Curso(0l,"Matemática",2050));
 
 			System.out.println("Exemplo de Lista");
-			List<Curso> lista = cursoRepository.obterTodos();
+			List<Curso> lista = cursoRepository.findAll();
 			lista.forEach(c -> {
 				System.out.println(c.getId());
 			});
 
 			
 			System.out.println("Exemplo de Lista por nome");
-			List<Curso> listaPorNome = cursoRepository.obterPorNome("ADS");
+			List<Curso> listaPorNome = cursoRepository.findByNome("ADS");
 			listaPorNome.forEach(System.out::println);
 			
-			System.out.println("Exemplo de categorias");
-			List<CategoriaCurso> listaPorCategoria = categoriaCursoRepository.obterTodos();
+			// System.out.println("Exemplo de categorias");
+			// List<CategoriaCurso> listaPorCategoria = categoriaCursoRepository.obterTodos();
 
-			listaPorCategoria.forEach(System.out::println);
+			// listaPorCategoria.forEach(System.out::println);
 
-			Curso cAds = lista.get(0);
-			Curso cSi  = lista.get(1);
+			// Curso cAds = lista.get(0);
+			// Curso cSi  = lista.get(1);
 
-			cAds.setCategoriaCurso(listaPorCategoria.get(0));
-			cSi.setCategoriaCurso(listaPorCategoria.get(1));
+			// cAds.setCategoriaCurso(listaPorCategoria.get(0));
+			// cSi.setCategoriaCurso(listaPorCategoria.get(1));
 
-			cursoRepository.update(cSi);
-			cursoRepository.update(cAds);
+			// cursoRepository.update(cSi);
+			// cursoRepository.update(cAds);
 		};
 	}
 
