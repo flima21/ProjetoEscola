@@ -12,22 +12,4 @@ import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 
 public interface CategoriaCursoRepository extends JpaRepository<CategoriaCurso,Long> {
-  
 }
-/*
-@Repository
-public class CategoriaCursoRepository {
-  @Autowired
-  private EntityManager entityManager;
-
-  @Transactional
-  public CategoriaCurso inserir(CategoriaCurso categoriaCurso) {
-    this.entityManager.merge(categoriaCurso);
-    return categoriaCurso;
-  }
-
-  public List<CategoriaCurso> obterTodos() {
-    return this.entityManager.createQuery("select c from CategoriaCurso c",CategoriaCurso.class).getResultList();
-  }
-}
- */
